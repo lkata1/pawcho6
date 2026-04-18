@@ -3,7 +3,7 @@
 FROM oven/bun:1.3.0 AS build
 RUN apt update && apt install -y git
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN --mount=type=ssh git clone ssh://git@github.com/lkata1/pawcho6.git
+RUN --mount=type=ssh git clone --recurse-submodules ssh://git@github.com/lkata1/pawcho6.git
 WORKDIR /home/bun/app/pawcho6/source/lab5
 RUN bun install
 RUN bun run build
